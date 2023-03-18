@@ -155,14 +155,14 @@ func (c *Client) buildSellOrder(req *OrdersCreateListingsRequest, creatorBasisPo
 	}
 
 	// opensea 修改了协议，不再需要手续费
-	//platformFee := model.ConsiderationItem{
-	//	ItemType:             ItemType_NATIVE,
-	//	Token:                ZeroAddress,
-	//	IdentifierOrCriteria: "0",
-	//	StartAmount:          strconv.FormatInt(CalcOpenSeaFeeByBasePrice(req.PriceWei), 10),
-	//	EndAmount:            strconv.FormatInt(CalcOpenSeaFeeByBasePrice(req.PriceWei), 10),
-	//	Recipient:            OpenSeaFeeRecipient,
-	//}
+	platformFee := model.ConsiderationItem{
+		ItemType:             ItemType_NATIVE,
+		Token:                ZeroAddress,
+		IdentifierOrCriteria: "0",
+		StartAmount:          strconv.FormatInt(CalcOpenSeaFeeByBasePrice(req.PriceWei), 10),
+		EndAmount:            strconv.FormatInt(CalcOpenSeaFeeByBasePrice(req.PriceWei), 10),
+		Recipient:            OpenSeaFeeRecipient,
+	}
 
 	considerations := []model.ConsiderationItem{sellerFee}
 
